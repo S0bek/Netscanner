@@ -55,80 +55,25 @@ sub standard_scan {
 
   if (defined($opts{x})) {
 
-    my %services = (
-                    "21" => "ftp",
-                    "22" => "ssh",
-                    "23" => "telnet",
-                    "25" => "smtp",
-                    "69" => "tftp",
-                    "80" => "http",
-                    "107" => "rtelnet",
-                    "110" => "pop3",
-                    "115" => "sftp",
-                    "123" => "ntp",
-                    "139" => "Netbios-ssn",
-                    "161" => "snmp",
-                    "389" => "ldap",
-                    "443" => "https",
-                    "636" => "ldaps",
-                    "873" => "rsync"
-                    );
+    my @ports = (21 , 22 , 23 , 25 , 69 , 80 , 107 , 110 , 115 , 123 , 139 , 161 , 389 , 443 , 636 , 873);
+    my @services = ("ftp" , "ssh" , "telnet" , "smtp" , "tftp" , "http" , "rtelnet" , "pop3" , "sftp" , "ntp" , "Netbios-ssn" , "snmp" , "ldap" , "https" , "ldaps" , "rsync");
+    my $i;
 
-    for my $std_port (keys %services) {
+    for ($i = 0; $i < @ports; $i++) {
+      my $sock;
+      my $service = $services[$i];
+      my $port = $ports[$i];
+      my $portaddr = sockaddr_in($port , $inetaddr);
+      my $timeout = 4;
+      socket($sock , AF_INET , SOCK_STREAM , $protocol) or die $!;
+      setsockopt($sock , SOL_SOCKET, SO_RCVTIMEO, pack('l!l!', $timeout, 0)) or die "setsockopt: $!";
 
-      $port = $std_port;
-      $portaddr = sockaddr_in($port , $inetaddr);
+      if (connect($sock , $portaddr)) {
+        print "Service $service detecte sur $host, le port est ouvert.\n";
+      }
 
-      print "TEST avec $std_port\n";
-
-      socket(SOCK , AF_INET , SOCK_STREAM , $protocol) or die $!;
-
-      if (connect(SOCK , $portaddr)) {
-
-        print "Service $services{$std_port} detecte sur $host, le port est ouvert.\n";
-
-      } #else { print "Port distant ferme ou hote inaccessible.\n"; }
-
-      close(SOCK);
-
-      # $port = $std_port;
-      # $portaddr = sockaddr_in($port , $inetaddr);
-      #
-      # if(!defined(my $pid = fork())) {
-      #   # si fork retourne undef, donc si aucune duplication si possible
-      #   die "Impossible de dupliquer le thread courant: $!";
-      #
-      # } elsif ($pid == 0) {
-      #
-      #   #processus fils
-      #   print "TEST avec $std_port\n";
-      #
-      #   socket(SOCK , AF_INET , SOCK_STREAM , $protocol) or die $!;
-      #
-      #   if (connect(SOCK , $portaddr)) {
-      #
-      #     print "Service $services{$std_port} detecte sur $host, le port est ouvert.\n";
-      #
-      #   } #else { print "Port distant ferme ou hote inaccessible.\n"; }
-      #
-      #   close(SOCK);
-      #   #  print "Printed by child process\n";
-      #   #  exec("date") || die "can't exec date: $!";
-      #
-      # } else {
-      #
-      #   #processus pere
-      #
-      #   # print "Printed by parent process\n";
-      #   my $ret = waitpid($pid , 0);
-      #   # print "Completed process id: $ret\n";
-      #
-      # }
-      #
-      # 1;
-
-
-
+      shutdown($sock, 2);
+      close($sock);
     }
 
   }
