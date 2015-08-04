@@ -30,7 +30,7 @@ if ((defined($opts{h}) and defined($opts{p})) or defined($opts{h}) and defined($
 
   }
 
-} else { die "$0 -h 192.168.0.1 -p 80\n-h: hote a scanner,\n-p: port a verifier\n"; }
+} else { die "$0 -h 192.168.0.1 -p 80\n-h: hote a scanner,\n-p: port a verifier\n-x (optionnel, a coupler avec h):scan les ports les plus reputes.\n"; }
 
 sub scan {
 
