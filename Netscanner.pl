@@ -72,7 +72,7 @@ sub standard_scan {
         print "Service $service detecte sur $host, le port est ouvert.\n";
       }
 
-      shutdown($sock, 2);
+      # shutdown($sock, 2);
       close($sock);
     }
 
