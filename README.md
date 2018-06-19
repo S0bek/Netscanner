@@ -10,6 +10,8 @@ Usage:
 
 `Netscanner.pl -h 192.168.0.1 -x`
 
+Options:
+
 `-h: adresse ip de l'hôte ciblé`
 
 `-p: port à tester`
@@ -21,9 +23,6 @@ Usage:
 Usage:
 
 `Netscanner.py -l length`
-
-`Netscanner (v2) by S0bek - Simple port scanner`
-
 
 Options:
 
