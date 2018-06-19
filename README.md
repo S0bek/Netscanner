@@ -5,6 +5,7 @@ Un simple scanner de ports
 ## VERSION PERL:
 
 Usage:
+
 `Netscanner.pl -h 192.168.0.1 -p 80`
 
 `Netscanner.pl -h 192.168.0.1 -x`
@@ -20,6 +21,7 @@ Usage:
 Usage:
 
 `Netscanner.py -l length`
+
 `Netscanner (v2) by S0bek - Simple port scanner`
 
 
