@@ -2,7 +2,7 @@
 
 Un simple scanner de ports
 
-##VERSION PERL:
+## VERSION PERL:
 
 Usage:
 `Netscanner.pl -h 192.168.0.1 -p 80`
@@ -15,14 +15,13 @@ Usage:
 
 `-x: scanner les ports les plus communs: ssh, http, ftp...`
 
-##VERSION PYTHON (les options changent):
+## VERSION PYTHON (les options changent):
 
 Usage:
 
-`Netscanner.py -l length
+`Netscanner.py -l length`
+`Netscanner (v2) by S0bek - Simple port scanner`
 
-Netscanner (v2) by S0bek - Simple port scanner
-`
 
 Options:
 
