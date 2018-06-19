@@ -1,6 +1,6 @@
 # Netscanner
 
-Un simple scanner de ports
+Un simple scanner de ports.
 
 ## VERSION PERL:
 
