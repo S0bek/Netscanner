@@ -22,7 +22,7 @@ ban = banner()
 parser = OptionParser()
 parser.prog = prog
 parser.description = ban
-parser.usage = parser.prog + " -l length"
+parser.usage = parser.prog
 parser.add_option("-a", "--host", type=str, dest="host", help="target host to scan")
 parser.add_option("-p" , "--port" , type=int , dest="ports" , help="port to scan")
 

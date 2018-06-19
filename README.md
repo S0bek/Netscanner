@@ -22,7 +22,7 @@ Options:
 
 Usage:
 
-`Netscanner.py -l length`
+`Netscanner.py`
 
 Options:
 
