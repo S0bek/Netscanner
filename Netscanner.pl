@@ -22,7 +22,7 @@ if ((defined($opts{h}) and defined($opts{p})) or defined($opts{h}) and defined($
     $portaddr = sockaddr_in($port , $inetaddr);
     $status = scan();
 
-    print "VALEUR DE STATUS: $status\n";
+    #print "$status\n";
 
   } elsif (defined($opts{x})){
 

@@ -70,8 +70,10 @@ def scan(host , port , service):
         sock = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
 
         status = sock.connect_ex((host , port))
+
         if status == 0:
             print("%s/tcp\t\topen\t\t%s" % (str(port) , service.upper()))
+
         sock.close()
 
     except Exception as e: print("[error]\tError during connection creation: " + str(e))
